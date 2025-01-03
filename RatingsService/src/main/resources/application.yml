@@ -4,4 +4,4 @@ spring:
       uri: mongodb://localhost:27017
       database: microservices
 server:
-  port: 6083
+  port: 8083
