@@ -5,6 +5,7 @@ import com.lcwd.ratings.entities.Ratings;
 import com.lcwd.ratings.services.RatingsServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,7 +31,7 @@ public class RatingsController {
     }
 
     //get all by userId
-    @GetMapping("/users/{userId}")
+    @GetMapping(value = "/users/{userId}", consumes ={ MediaType.APPLICATION_XML_VALUE,MediaType.TEXT_XML_VALUE,MediaType.ALL_VALUE})
     public ResponseEntity<List<Ratings>> getRatingsByUserId(@PathVariable String userId){
         return ResponseEntity.ok(ratingsServices.getRatingsByUserId(userId));
     }

@@ -30,8 +30,8 @@ public class UserController {
         User user = userServices.getUser(userId);
         return ResponseEntity.ok(user);
     }
-    //all user
 
+    //all user
     @GetMapping
     public ResponseEntity<List<User>> getAlluser(){
         List<User> allUser = userServices.getAllUser();
