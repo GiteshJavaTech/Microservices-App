@@ -56,7 +56,7 @@ public class UserServiseImpl implements UserServices {
     public User getUser(String userId) {
         User user = userRepository.findById(userId).orElseThrow(() -> new ResourceNotFoundException("User with give id is not found on server !! " + userId));
         //fetch rating for the above user from the RATING SERVICE
-        String ratingUrl = "http://localhost:8083/ratings/users/"+user.getUserId();
+        String ratingUrl = "http://RATINGSSERVICE/ratings/users/"+user.getUserId();
         Rating[] ratingsOfUser = restTemplate.getForObject(ratingUrl, Rating[].class);
         logger.info("{}", ratingsOfUser);
 
@@ -70,7 +70,7 @@ public class UserServiseImpl implements UserServices {
         List<Rating> ratingList = ratings.stream().map(rating -> {
             // api call to hotel service to get the hotel
             //localhost:8082/hotels/b696c519-f421-4902-a520-2ffdbd0a0f8f
-            String hotelUrl = "http://localhost:8082/hotels/"+rating.getHotelId();
+            String hotelUrl = "http://HOTELSERVICE/hotels/"+rating.getHotelId();
             ResponseEntity<Hotel> forEntity = restTemplate.getForEntity(hotelUrl, Hotel.class);
             Hotel hotel = forEntity.getBody();
             logger.info("Response status code : {} ",forEntity.getStatusCode());

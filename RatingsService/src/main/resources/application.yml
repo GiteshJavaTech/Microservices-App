@@ -3,10 +3,10 @@ spring:
     mongodb:
       uri: mongodb://localhost:27017
       database: microservices
+  application:
+    name: RATINGS-SERVICE
 server:
   port: 8083
-  application:
-    name:RATING-SERVICE
 eureka:
   instance:
     prefer-ip-address: true
