@@ -26,5 +26,5 @@ public class User {
     private String about;
 
     @Transient// if we don't want to persist and just to ignore
-    private List<Ratings> ratings = new ArrayList<>();
+    private List<Rating> ratings = new ArrayList<>();
 }
